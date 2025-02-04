@@ -18,7 +18,13 @@ puts "There are #{Company.all.count} companies" #interpolate # of companies with
 
 # 2. insert new rows in companies table
 new_company = Company.new_company
-puts new_company
+puts new_company.inspect
+new_company['name']= 'Apple'
+new_company['city']='Cupertino'
+new_company['state']='California'
+new_company['url'] = 'https://www.apple/com'
+
+new_company.save
 # 3. query companies table to find all row with California company
 
 # 4. query companies table to find single row for Apple
