@@ -14,8 +14,11 @@ Company.destroy_all
 # 1a. check out the schema file
 # 1b. check out the model file
 
-# 2. insert new rows in companies table
+puts "There are #{Company.all.count} companies" #interpolate # of companies with method
 
+# 2. insert new rows in companies table
+new_company = Company.new_company
+puts new_company
 # 3. query companies table to find all row with California company
 
 # 4. query companies table to find single row for Apple
