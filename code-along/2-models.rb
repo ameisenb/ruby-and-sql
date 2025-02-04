@@ -17,20 +17,56 @@ Company.destroy_all
 puts "There are #{Company.all.count} companies" #interpolate # of companies with method
 
 # 2. insert new rows in companies table
-new_company = Company.new_company
-puts new_company.inspect
+new_company = Company.new 
+new_company.inspect
 new_company['name']= 'Apple'
 new_company['city']='Cupertino'
-new_company['state']='California'
+new_company['state']='CA'
 new_company['url'] = 'https://www.apple/com'
 
 new_company.save
+
+puts new_company.inspect
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new 
+new_company['name'] = 'Amazon'
+new_company['city']= 'Seattle'
+new_company['state'] = 'WA'
+new_company.save
+
+puts new_company.inspect
+puts "There are #{Company.all.count} companies"
+
+new_company = Company.new
+new_company['name'] = 'Meta'
+new_company['city']= 'Menlo Park'
+new_company['state'] = 'CA'
+new_company.save
+
 # 3. query companies table to find all row with California company
+
+cali_companies = Company.where({'state' => "CA"})
+puts cali_companies.inspect
+puts "Cali companies : #{cali_companies.count}"
 
 # 4. query companies table to find single row for Apple
 
+#apple= Company.where({'name' => "Apple"})[0]
+apple = Company.find_by({'name'=> 'Apple'})
+puts apple.inspect
+
 # 5. read a row's column value
 
+apple_url = apple['url']
+puts apple_url
+
 # 6. update a row's column value
+
+amazon = Company.find_by({'name'=>'Amazon'})
+amazon['url'] = 'https://amazon.com'
+
+amazon.save
+puts amazon.inspect
 
 # 7. delete a row
